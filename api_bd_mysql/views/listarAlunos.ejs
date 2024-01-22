@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Listagem dos alunos</h1>
+    </header>
+    <main>
+        <section>
+            <% if(alunos.length > 0){ %>
+                <table>
+                    <tr>
+                        <th>Matricula</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Data Nascimento</th>
+                        <th>Turma</th>
+                        <th>Telefone</th>
+                        <th>Sexo</th>
+                        <th colspan="2">Ações</th>
+                    </tr>
+                    <% alunos.forEach(alu => {%>
+                        <tr>
+                            <td><%= alu.MATRICULA %></td>
+                            <td><%= alu.NOME %></td>
+                            <td><%= alu.EMAIL %></td>
+                            <td><%= alu.DATA_NASCIMENTO %></td>
+                            <td><%= alu.TURMA %></td>   
+                            <td><%= alu.FONE %></td>
+                            <td><%= alu.SEXO %></td>
+                            <td><a href="/alunos/editarAluno/<%= alu.MATRICULA %>">Editar</a></td>
+                            <td><a href="">Excluir</a></td>
+                        </tr>
+                    <% }) %>
+                </table>
+            <% } else { %>
+                <p>Nenhum registro no banco de dados!</p>
+            <% } %>
+        </section>
+    </main>
+</body>
+</html>
