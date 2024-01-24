@@ -13,6 +13,14 @@ const alunoControler = {
             res.json(error)
         })
     },
+    formDeletarAluno: (req,res)=>{
+        const id = req.params
+        db.select("*").table("alunos").where({matricula: id.matricula}).then(data =>{ 
+            res.render('apagarAluno', {data})
+        }).catch(error=>{
+            res.json(error)
+        })
+    },
     listarAlunos: (req, res)=> {
         db.select("*").table("alunos").then(data =>{ 
             //data equivale aos alunos listados do bd

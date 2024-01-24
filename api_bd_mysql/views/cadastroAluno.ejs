@@ -21,7 +21,13 @@
     </style>
 </head>
 <body>
-    <h1>Cadastro de Aluno</h1>
+    <header>
+        <h1>Cadastro de Aluno</h1>
+        <nav>
+            <li><a href="/">Home Page</a></li>
+            <li><a href="/alunos/listAllAlunos">Lista de alunos</a></li>
+        </nav>
+    </header>
     <form action="/alunos/newAluno" method="post">
         <label for="matricula">Matricula:</label>
         <input type="text" id="matricula" name="matricula" placeholder="Insira a matricula"/>

@@ -19,6 +19,6 @@ router.put('/editarAluno/:matricula', alunoController.editarAluno)
 //render front
 router.get('/cadastroAluno', alunoController.formCadastro)
 router.get('/editarAluno/:matricula', alunoController.formEditarAluno)
-// router.get('/apagarAluno/:matricula', alunoController.formDeletarAluno)
+router.get('/apagarAluno/:matricula', alunoController.formDeletarAluno)
 
 module.exports= router

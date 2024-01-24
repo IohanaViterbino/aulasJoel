@@ -21,18 +21,19 @@
     </style>
 </head>
 <body>
-    <h1>Cadastro de Aluno</h1>
+    <h1>Edição de registro</h1>
     <% if(data.length > 0){ %>
         <% data.forEach(alu => {%>
-            <form action="/alunos/editarAluno/<%= alu.MATRICULA %>?_method=PUT" method="post">
+            <!-- o '?_method=<nome do método http>' é uma adaptação para o formulário poder receber a edição-->
+            <form action="/alunos/editarAluno/<%= alu.MATRICULA %>?_method=PUT" method="post"> 
                 <label for="matricula">Matricula:</label>
-                <input type="text" id="matricula" name="matricula" value="<%= alu.MATRICULA %>" />
+                <input type="text" id="matricula" name="matricula" value="<%= alu.MATRICULA %>" disabled="true" />
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome" value="<%= alu.NOME %>"/>
                 <label for="email">E-mail:</label>
                 <input type="email" name="email" id="email" value="<%= alu.EMAIL %>"/>
                 <label for="data_nascimento">Data de Nascimeno</label>
-                <input type="date" name="data_nascimento" id="data_nascimento" value="<%= alu.DATA_NASCIMENTO %>"/>
+                <input type="date" name="data_nascimento" id="data_nascimento" value="<%= new Date(alu.DATA_NASCIMENTO).toISOString().split('T')[0] %>"/>
                 <label for="turma">Turma:</label>
                 <input type="text" name="turma" id="turma" value="<%= alu.TURMA %>"/>
                 <label for="fone">Telefone:</label>
@@ -41,11 +42,13 @@
                 <input type="radio" name="sexo" id="sexo" value="M" <%= alu.SEXO === 'M' ? 'checked' : '' %>/>
                 <label for="sexo">F</label>
                 <input type="radio" name="sexo" id="sexo" value="F" <%= alu.SEXO === 'F' ? 'checked' : '' %>/>
-                <input type="submit" value="Enviar" name="cadastrar"/>
+                <input type="submit" value="Enviar" name="editar"/>
             </form>
+            <button><a href="/alunos/listAllAlunos">Cancelar</a></button>
         <% }) %>
     <% } else { %>
         <p>Nenhum registro no banco de dados!</p>
     <% } %>
+
 </body>
 </html>

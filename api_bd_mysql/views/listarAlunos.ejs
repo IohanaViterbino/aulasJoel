@@ -9,6 +9,10 @@
 <body>
     <header>
         <h1>Listagem dos alunos</h1>
+        <nav>
+            <li><a href="/alunos/cadastroAluno">Cadastro de alunos</a></li>
+            <li><a href="/">Home Page</a></li>
+        </nav>
     </header>
     <main>
         <section>
@@ -29,12 +33,13 @@
                             <td><%= alu.MATRICULA %></td>
                             <td><%= alu.NOME %></td>
                             <td><%= alu.EMAIL %></td>
-                            <td><%= alu.DATA_NASCIMENTO %></td>
+                            <td><%= new Date(alu.DATA_NASCIMENTO).toISOString().split('T')[0] %></td>
                             <td><%= alu.TURMA %></td>   
                             <td><%= alu.FONE %></td>
                             <td><%= alu.SEXO %></td>
                             <td><a href="/alunos/editarAluno/<%= alu.MATRICULA %>">Editar</a></td>
-                            <td><a href="">Excluir</a></td>
+                            <td><a href="/alunos/apagarAluno/<%= alu.MATRICULA %>">Excluir</a></td>
+                            <!-- botoes que ancora as rotas -->
                         </tr>
                     <% }) %>
                 </table>
