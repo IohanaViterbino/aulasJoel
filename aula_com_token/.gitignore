@@ -1,0 +1,5 @@
+# Dependências (pode variar dependendo da linguagem ou ferramenta)
+node_modules/
+
+# Arquivos temporários
+.env
