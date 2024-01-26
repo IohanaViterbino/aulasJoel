@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cad</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 25rem;
+            line-height: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Confirmação de exclusão</h1>
+    <% if(data.length > 0){ %>
+        <% data.forEach(alu => {%>
+            <!-- o '?_method=<nome do método http>' é uma adaptação para o formulário poder receber a edição-->
+            <form action="/alunos/apagarAluno/<%= alu.MATRICULA %>?_method=DELETE" method="post"> 
+                <label for="matricula">Matricula:</label>
+                <input type="text" id="matricula" name="matricula" value="<%= alu.MATRICULA %>" disabled="true" />
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" value="<%= alu.NOME %>" disabled="true"/>
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email" value="<%= alu.EMAIL %>" disabled="true"/>
+                <label for="data_nascimento">Data de Nascimeno</label>
+                <input type="date" name="data_nascimento" id="data_nascimento" value="<%= new Date(alu.DATA_NASCIMENTO).toISOString().split('T')[0] %>" disabled="true"/>
+                <label for="turma">Turma:</label>
+                <input type="text" name="turma" id="turma" value="<%= alu.TURMA %>" disabled="true"/>
+                <label for="fone">Telefone:</label>
+                <input type="tel" name="fone" id="fone" value="<%= alu.FONE %>" disabled="true"/>
+                <label for="sexo">M</label>
+                <input type="radio" name="sexo" id="sexo" value="M" disabled="true" <%= alu.SEXO === 'M' ? 'checked' : '' %>/>
+                <label for="sexo">F</label>
+                <input type="radio" name="sexo" id="sexo" value="F" disabled="true" <%= alu.SEXO === 'F' ? 'checked' : '' %>/>
+                <input type="submit" value="Apagar" name="excluir"/>
+            </form>
+            <button><a href="/alunos/listAllAlunos">Cancelar</a></button>
+        <% }) %>
+    <% } else { %>
+        <p>Nenhum registro no banco de dados!</p>
+    <% } %>
+
+</body>
+</html>
