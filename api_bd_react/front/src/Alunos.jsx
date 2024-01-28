@@ -1,5 +1,5 @@
-import { useState } from "react";
-import getAlunos from './crud/GetAlunos';
+// import { useState } from "react";
+import GetAlunos from './crud/GetAlunos';
 
 
 export default function Alunos(){
@@ -13,7 +13,7 @@ export default function Alunos(){
 //                 return (<GetAlunos/>);
 //         }
 //     }
-    return{
+    return(
         <GetAlunos/>
-    }
+    );
 }

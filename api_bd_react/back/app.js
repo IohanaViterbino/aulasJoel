@@ -11,11 +11,8 @@ app.use(express.urlencoded({extended: false}))
 app.use('/alunos', router)
 
 
-app.get('/', (req, res) =>{
-    // res.send('Hello')
-    res.render('index')
-})  
-
 app.listen(port, () => {
-    console.log(`Aplicação rodando em http://localhost:${port}`)
+    console.log(`Aplicação rodando na porta ${port}`)
 })
+
+module.exports = app;
