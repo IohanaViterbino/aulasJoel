@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Listagem dos alunos</h1>
+        <nav>
+            <li><a href="/alunos/cadastroAluno">Cadastro de alunos</a></li>
+            <li><a href="/">Home Page</a></li>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <% if(alunos.length > 0){ %>
+                <table border="1">
+                    <tr>
+                        <th>Matricula</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Data Nascimento</th>
+                        <th>Turma</th>
+                        <th>Telefone</th>
+                        <th>Sexo</th>
+                        <th colspan="2">Ações</th>
+                    </tr>
+                    <% alunos.forEach(alu => {%>
+                        <tr>
+                            <td><%= alu.matricula %></td>
+                            <td><%= alu.nome %></td>
+                            <td><%= alu.email %></td>
+                            <td><%= alu.data_nascimento %></td>
+                            <td><%= alu.turma %></td>   
+                            <td><%= alu.fone %></td>
+                            <td><%= alu.sexo %></td>
+                            <td><a href="/alunos/editarAluno/<%= alu.MATRICULA %>">Editar</a></td>
+                            <td><a href="/alunos/apagarAluno/<%= alu.MATRICULA %>">Excluir</a></td>
+                            <!-- botoes que ancora as rotas -->
+                        </tr>
+                    <% }) %>
+                </table>
+            <% } else { %>
+                <p>Nenhum registro no banco de dados!</p>
+            <% } %>
+        </section>
+    </main>
+</body>
+</html>
