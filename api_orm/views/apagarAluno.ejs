@@ -25,30 +25,31 @@
     <% if(data.length > 0){ %>
         <% data.forEach(alu => {%>
             <!-- o '?_method=<nome do método http>' é uma adaptação para o formulário poder receber a edição-->
-            <form action="/alunos/apagarAluno/<%= alu.MATRICULA %>?_method=DELETE" method="post"> 
+            <form action="/alunos/apagarAluno/<%= alu.matricula%>?_method=DELETE" method="post"> 
                 <label for="matricula">Matricula:</label>
-                <input type="text" id="matricula" name="matricula" value="<%= alu.MATRICULA %>" disabled="true" />
+                <input type="text" id="matricula" name="matricula" value="<%= alu.matricula %>" disabled="true" />
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" id="nome" value="<%= alu.NOME %>" disabled="true"/>
+                <input type="text" name="nome" id="nome" value="<%= alu.nome %>" disabled="true" />
                 <label for="email">E-mail:</label>
-                <input type="email" name="email" id="email" value="<%= alu.EMAIL %>" disabled="true"/>
+                <input type="email" name="email" id="email" value="<%= alu.email %>" disabled="true" />
                 <label for="data_nascimento">Data de Nascimeno</label>
-                <input type="date" name="data_nascimento" id="data_nascimento" value="<%= new Date(alu.DATA_NASCIMENTO).toISOString().split('T')[0] %>" disabled="true"/>
+                <input type="date" name="data_nascimento" id="data_nascimento" value="<%= alu.data_nascimento %>" disabled="true" />
                 <label for="turma">Turma:</label>
-                <input type="text" name="turma" id="turma" value="<%= alu.TURMA %>" disabled="true"/>
+                <input type="text" name="turma" id="turma" value="<%= alu.turma %>" disabled="true" />
                 <label for="fone">Telefone:</label>
-                <input type="tel" name="fone" id="fone" value="<%= alu.FONE %>" disabled="true"/>
+                <input type="tel" name="fone" id="fone" value="<%= alu.fone %>" disabled="true" />
                 <label for="sexo">M</label>
-                <input type="radio" name="sexo" id="sexo" value="M" disabled="true" <%= alu.SEXO === 'M' ? 'checked' : '' %>/>
+                <input type="radio" name="sexo" id="sexo" disabled="true" value="M" <%= alu.sexo === 'M' ? 'checked' : '' %>/>
                 <label for="sexo">F</label>
-                <input type="radio" name="sexo" id="sexo" value="F" disabled="true" <%= alu.SEXO === 'F' ? 'checked' : '' %>/>
-                <input type="submit" value="Apagar" name="excluir"/>
+                <input type="radio" name="sexo" id="sexo" disabled="true" value="F" <%= alu.sexo === 'F' ? 'checked' : '' %>/>
+                <input type="submit" value="Excluir" name="excluir"/>
             </form>
-            <button><a href="/alunos/listAllAlunos">Cancelar</a></button>
         <% }) %>
     <% } else { %>
         <p>Nenhum registro no banco de dados!</p>
     <% } %>
+    
+    <button><a href="/alunos/listAllAlunos">voltar</a></button>
 
 </body>
 </html>

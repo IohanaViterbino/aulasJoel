@@ -18,16 +18,16 @@ Content-Type: application/json
 GET http://localhost:3000/alunos/listAllAlunos
 
 ###
-GET http://localhost:3000/alunos/buscarAlunoMatricula/1001
+GET http://localhost:3000/alunos/buscarAlunoMatricula/1
 
 ###
 GET http://localhost:3000/alunos/buscarAlunoTurma/2º ano A
 
 ###
-DELETE http://localhost:3000/alunos/apagarAluno/0020
+DELETE http://localhost:3000/alunos/apagarAluno/2
 
 ###
-PUT http://localhost:3000/alunos/editarAluno/1
+PUT http://localhost:3000/alunos/editarAluno/5
 Content-Type: application/json
 
 {
