@@ -1,0 +1,47 @@
+###
+GET http://localhost:3000/
+
+###
+POST http://localhost:3000/alunos/newAluno
+Content-Type: application/json
+
+{
+    "matricula": "0011",
+    "nome": "gloglo",
+    "email": "du@email.com",
+    "data_nascimento": "2003-08-31",
+    "turma": "2º ano A",
+    "fone": "8488990077",
+    "sexo": "M"
+}
+
+###
+GET http://localhost:3000/alunos/listAllAlunos
+
+###
+GET http://localhost:3000/alunos/buscarAlunoMatricula/1001
+
+###
+GET http://localhost:3000/alunos/buscarAlunoTurma/2º ano A
+
+###
+DELETE http://localhost:3000/alunos/apagarAluno/0020
+
+###
+PUT http://localhost:3000/alunos/editarAluno/0011
+Content-Type: application/json
+
+{
+    "nome": "gluglu",
+    "email": "duapinha@email.com",
+    "data_nascimento": "2003-06-09",
+    "turma": "2º ano B",
+    "fone": "8444668877",
+    "sexo": "F"
+}
+
+###
+GET http://localhost:3000/alunos/cadastroAluno
+
+###
+GET http://localhost:3000/alunos/editarAluno/0011
