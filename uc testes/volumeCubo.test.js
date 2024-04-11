@@ -10,6 +10,7 @@ test('As arestas do cubo são 2.5, então o volume é 15.625', () => {
 
 test('As arestas do cubo são "A", então o volume é "Inválido, insira um número"', () => {
     expect(volC("A")).toBe("Inválido, insira um número");
+    expect(volC(null)).toBe("Inválido, insira um número maior que zero");
 });
 
 test('As arestas do cubo são 0, então o volume é "Inválido, insira um número maior que zero"', () => {
