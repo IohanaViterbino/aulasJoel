@@ -4,7 +4,9 @@
   "description": "",
   "main": "soma.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --watchAll --coverage"
   },
   "keywords": [],
   "author": "",

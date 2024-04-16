@@ -10,12 +10,12 @@ test('Notas altas', () => {
 })
 
 test('Notas números negativos ou zero', () => {
-    expect(notas(7, 7, -7)).toBe("Números maiores que zero devem ser inseridos para o cálculo");
-    expect(notas(7, 0, 7)).toBe("Números maiores que zero devem ser inseridos para o cálculo");
+    expect(notas(-7, 7, -7)).toBe("Números maiores que zero devem ser inseridos para o cálculo");
+    expect(notas(-7, 0, 7)).toBe("Números maiores que zero devem ser inseridos para o cálculo");
 })
 
 test('Entrada errada', () => {
-    expect(notas(7, 't', 'a')).toBe("Números devem ser inseridos para o cálculo");
+    expect(notas('ik', 't', 'a')).toBe("Números devem ser inseridos para o cálculo");
 })
 
 test('Falte nota', () => {

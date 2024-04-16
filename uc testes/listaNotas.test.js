@@ -7,5 +7,6 @@ test('lista com notas válidas', () => {
 
 test('lista com notas inválidas', () => {
     expect(lista([4, 8, "a"])).toBe("A nota deve ser um número.");
+    expect(lista([null])).toBe(0);
     expect(lista([])).toBe("O array de notas está vazio.");
 })
