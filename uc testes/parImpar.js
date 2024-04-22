@@ -16,9 +16,9 @@ function parOuImpar(num) {
     } else if(num < 0){
         //par e impar negativo
         if(num%2==0){
-            saida = "par positivo"
+            saida = "par negativo"
         } else {
-            saida = "impar positivo"
+            saida = "impar negativo"
 
         }
     } else {
