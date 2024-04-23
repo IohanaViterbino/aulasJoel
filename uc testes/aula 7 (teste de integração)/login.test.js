@@ -17,4 +17,24 @@ describe('teste de integração e autentificação', ()=>{
         const result = autService.login('ferro', 55845);
         expect(result).toBe(true)
     })
+
+    test('Username e pass incorretos', ()=>{
+        const result = autService.login('ferrugem', 44998);
+        expect(result).toBe(false)
+    })
+
+    test('user certo e pass incorreto', ()=>{
+        const result = autService.login('ferro', 55846)
+        expect(result).toBe(false)
+    })
+
+    test('user incorreto e pass correto', ()=>{
+        const result = autService.login('eugenio', 55845)
+        expect(result).toBe(false)
+    })
+
+    test('user e pass vazios', ()=>{
+        const result = autService.login('', '')
+        expect(result).toBe(false)
+    })
 })
