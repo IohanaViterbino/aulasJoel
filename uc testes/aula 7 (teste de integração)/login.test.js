@@ -37,4 +37,27 @@ describe('teste de integração e autentificação', ()=>{
         const result = autService.login('', '')
         expect(result).toBe(false)
     })
+
+    test('Verificação de login, quando houver login', ()=>{
+        const login = autService.login('ferro', 55845)
+        const result = autService.isLoggedIn()
+        expect(result).toBe(true)
+    })
+
+    test('listagem dos registros', ()=>{
+        const result = database.listUsers()
+        expect(result).toBe(undefined) 
+        // já que ele não retorna e sim apresenta no console
+    })
+
+    test('Verificação de login, quando não houver login', ()=>{
+        const result = autService.isLoggedIn()
+        expect(result).toBe(false)
+    })
+
+    test('logout', ()=>{
+        const login = autService.login('ferro', 55845)
+        const result = autService.logout()
+        expect(result).toBe("Tchauauauauua")
+    })
 })

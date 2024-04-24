@@ -26,7 +26,7 @@ class AuthService{
     
     logout(){
         this.loggedInUser = null;
-        console.log("Tchauauauauua")
+        return "Tchauauauauua"
     }
 }
 
