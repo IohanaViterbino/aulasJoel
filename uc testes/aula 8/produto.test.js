@@ -1,4 +1,23 @@
-const produtos = require('./produtoModel')
+const produtos = require('./produtos')
+
+beforeEach(async () => {
+    await new Promise((resolve, reject) => {
+        produtos.deleteAllProducts((error, result) => {
+            if (error) reject(error);
+            resolve();
+        });
+    });
+    await new Promise((resolve, reject) => {
+        produtos.createProduct('Pamonha','2.50', (error, result) => {
+            if (error) reject(error);s
+            resolve();
+        });
+        produtos.createProduct('Pamonha','2.50', (error, result) => {
+            if (error) reject(error);
+            resolve();
+        });
+    });
+});
 
 test('Adicionando produto ao banco', done => {
     produtos.createProduct('Pastel de Carne', '8,50',(err, resul) => {
@@ -46,4 +65,8 @@ test('deletando toda a base', done => {
         expect(resul.serverStatus).toBe(34);
         done();
     })
+})
+
+describe('Ttstes de carga', () => {
+
 })
