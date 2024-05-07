@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Usuários</title>
+</head>
+<body>
+    <form id="cadForm" method="post" action="/cadastro">
+        <label for="nome">nome:</label>
+        <input type="text" name="nome" id="nome"><br>
+        <label for="idade">idade:</label>
+        <input type="number" name="idade" id="idade"><br>
+        <label for="telefone">telefone:</label>
+        <input type="text" name="telefone" id="telefone"><br>
+        <label for="endereco">endereco:</label>
+        <input type="text" name="endereco" id="endereco"><br>
+        <label for="email">email:</label>
+        <input type="email" name="email" id="email"><br>
+        <label for="senha">senha:</label>
+        <input type="password" name="senha" id="senha"><br>
+        
+        <button type="submit">cadastrar</button>
+    </form>
+    <div id="message"></div>
+    
+    <a id="LogRend" href="http://localhost:3002">volte para página de login</a>
+    
+    <script>
+        document.getElementById('cadForm').addEventListener('submit', async(e)=>{
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const idade = document.getElementById('idade').value;
+            const endereco = document.getElementById('endereco').value;
+            const telefone = document.getElementById('telefone').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            const response = await fetch('/cadastro', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({nome, idade, telefone, email, endereco, senha})
+            });
+            const result = await response.json();
+            const messageDiv = document.getElementById('message');
+            if(result.sucess){
+                messageDiv.textContent = 'Cadastro bem feito :) Bem-vindo ao Dashboard!';
+            }else{
+                messageDiv.textContent = 'Cadastro mal feito :( Credenciais invalidas, tente novamente.';
+            }
+
+        })
+    </script>
+</body>
+</html>
