@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 const { dirname } = path;
 const app = express();
-const PORT = 3002;
+const PORT = 3000;
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -31,17 +31,10 @@ app.get('/cadastro', (req, res) =>{
 })
 
 app.post('/cadastro', (req, res) =>{
-    const {nome, idade, telefone, endereco, email, senha} = req.body;
-    if(nome && idade && telefone && endereco && email ){
-        if (senha.length >= 8) {
-            users[nome] = senha;
-            res.json({sucess: true, message: 'Cadastro realizado com sucesso'});
-        } else {
-            res.json({sucess: false, message: 'Cadastro de senha invalida.'})
-        }
-    } else {
-        res.json({sucess: false, message: 'Cadastro invalido.'});
-    }
+    const {username, email, password} = req.body;
+        users[username] = password;
+        // res.json({sucess: true, message: 'Cadastro realizado com sucesso'});
+        res.redirect('http://localhost:3000')
 })
 
 app.listen(PORT, () => {

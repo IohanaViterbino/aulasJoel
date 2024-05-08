@@ -8,50 +8,68 @@
     <title>Cadastro de Usuários</title>
 </head>
 <body>
-    <form id="cadForm" method="post" action="/cadastro">
-        <label for="nome">nome:</label>
-        <input type="text" name="nome" id="nome"><br>
-        <label for="idade">idade:</label>
-        <input type="number" name="idade" id="idade"><br>
-        <label for="telefone">telefone:</label>
-        <input type="text" name="telefone" id="telefone"><br>
-        <label for="endereco">endereco:</label>
-        <input type="text" name="endereco" id="endereco"><br>
-        <label for="email">email:</label>
-        <input type="email" name="email" id="email"><br>
-        <label for="senha">senha:</label>
-        <input type="password" name="senha" id="senha"><br>
-        
-        <button type="submit">cadastrar</button>
+    <h1>Formulário de Cadastro</h1>
+    <form action="http://localhost:3000/cadastro" method="post">
+        <label for="username">Nome de usuário:</label>
+        <input type="text" id="username" name="username">
+        <span id="erroruser" class="error-message" style="color: red;"></span><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <span id="erroremail" class="error-message" style="color: red;"></span><br><br>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password">
+        <span id="errorpass" class="error-message" style="color: red;"></span><br><br>
+
+        <input type="submit" value="Cadastrar">
     </form>
-    <div id="message"></div>
     
-    <a id="LogRend" href="http://localhost:3002">volte para página de login</a>
+    <a id="LogRend" href="http://localhost:3000">volte para página de login</a>
     
     <script>
-        document.getElementById('cadForm').addEventListener('submit', async(e)=>{
-            e.preventDefault();
-            const nome = document.getElementById('nome').value;
-            const idade = document.getElementById('idade').value;
-            const endereco = document.getElementById('endereco').value;
-            const telefone = document.getElementById('telefone').value;
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
+        document.querySelector('form').addEventListener('submit', function(event){
+        event.preventDefault(); // Prevenir o envio do formulário
 
-            const response = await fetch('/cadastro', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({nome, idade, telefone, email, endereco, senha})
-            });
-            const result = await response.json();
-            const messageDiv = document.getElementById('message');
-            if(result.sucess){
-                messageDiv.textContent = 'Cadastro bem feito :) Bem-vindo ao Dashboard!';
-            }else{
-                messageDiv.textContent = 'Cadastro mal feito :( Credenciais invalidas, tente novamente.';
-            }
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        let isValid = true;
 
-        })
+        if (!username.value) {
+            showErrorMessage(username.nextElementSibling, 'Nome de usuário é obrigatório');
+            isValid = false;
+        } else {
+            clearErrorMessage(username.nextElementSibling);
+        }
+
+        if (!email.value) {
+            showErrorMessage(email.nextElementSibling, 'Email é obrigatório');
+            isValid = false;
+        } else {
+            clearErrorMessage(email.nextElementSibling);
+        }
+
+        if (!password.value) {
+            showErrorMessage(password.nextElementSibling, 'Senha é obrigatória');
+            isValid = false;
+        } else {
+            clearErrorMessage(password.nextElementSibling);
+        }
+
+        if (isValid) {
+            this.submit()
+            // Submete o formulário se tudo estiver correto
+        }
+    });
+
+    function showErrorMessage(element, message) {
+        element.textContent = message;
+    }
+
+    function clearErrorMessage(element) {
+        element.textContent = '';
+    }
     </script>
 </body>
 </html>
