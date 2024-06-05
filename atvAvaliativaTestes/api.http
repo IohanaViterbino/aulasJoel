@@ -1,0 +1,12 @@
+###
+POST http://localhost:3000/user/criarUser
+Content-Type: application/json
+
+{
+    "nome": "Iohan",
+    "email": "teste@email.com",
+    "senha": "senhacomp"
+}
+
+###
+GET http://localhost:3000/user/listar
