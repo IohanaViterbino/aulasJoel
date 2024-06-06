@@ -8,8 +8,6 @@ const userController = {
         if(user){
             banco.push(user)
             res.json(user)
-        } else{
-            res.send("erro")
         }
     },
     listar: (req, res) =>{

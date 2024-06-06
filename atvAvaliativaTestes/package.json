@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll",
+    "test:watch": "jest --watchAll --coverage",
     "dev": "nodemon app.js"
   },
   "keywords": [],
@@ -20,6 +20,20 @@
     "supertest": "^7.0.0"
   },
   "devDependencies": {
+    "jest-html-reporters": "^3.1.7",
     "nodemon": "^3.0.2"
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporters",
+        {
+          "publicPath": "./reports",
+          "filename": "report.html",
+          "expand": true
+        }
+      ]
+    ]
   }
 }

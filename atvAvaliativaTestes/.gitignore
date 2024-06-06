@@ -1,2 +1,3 @@
 # Dependências (pode variar dependendo da linguagem ou ferramenta)
 node_modules/
+coverage/
